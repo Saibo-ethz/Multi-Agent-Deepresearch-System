@@ -53,7 +53,7 @@ User Query
 | Layer | Technology |
 |-------|-----------|
 | Agent Orchestration | LangGraph |
-| LLM | DeepSeek / Qwen (OpenAI-compatible) |
+| LLM | DeepSeek (OpenAI-compatible API) |
 | Web Framework | FastAPI + Uvicorn |
 | Web Search | Bocha AI API |
 | Vector Database | Milvus |
@@ -90,7 +90,7 @@ cp .env.example .env
 Required keys:
 
 ```env
-DASHSCOPE_API_KEY=your_llm_api_key   # or DeepSeek key
+DASHSCOPE_API_KEY=your_deepseek_api_key
 BOCHA_API_KEY=your_bocha_key
 REDIS_URL=redis://:yourpassword@127.0.0.1:6379
 POSTGRES_DSN=postgresql://root:yourpassword@127.0.0.1:5432/mydb
