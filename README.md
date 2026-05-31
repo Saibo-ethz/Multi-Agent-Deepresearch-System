@@ -9,13 +9,13 @@ User Query
     │
     ▼
 ┌─────────────────────────────────────────────┐
-│           Interface Layer                    │
-│   CLI Terminal │ FastAPI REST │ WebSocket    │
+│           Interface Layer                   │
+│   CLI Terminal │ FastAPI REST │ WebSocket   │
 └─────────────────────────────────────────────┘
     │
     ▼
 ┌─────────────────────────────────────────────┐
-│         Orchestration Layer (LangGraph)      │
+│         Orchestration Layer (LangGraph)     │
 │                                             │
 │  START → intent → plan → web/local search   │
 │       → deep_dive → analyze → reflect?      │
@@ -94,7 +94,7 @@ DASHSCOPE_API_KEY=your_deepseek_api_key
 BOCHA_API_KEY=your_bocha_key
 REDIS_URL=redis://:yourpassword@127.0.0.1:6379
 POSTGRES_DSN=postgresql://root:yourpassword@127.0.0.1:5432/mydb
-ENABLE_MILVUS=false                   # set true if Milvus is running
+ENABLE_MILVUS= true
 ```
 
 ### 3. Install dependencies
