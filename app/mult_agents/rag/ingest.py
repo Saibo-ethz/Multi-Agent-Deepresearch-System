@@ -1,32 +1,29 @@
 import logging
-import os
 import sys
 from pathlib import Path
 
-from mult_agents.src.mult_agents.rag.core import RAGSystem
-from mult_agents_memory.app.mult_agents.config import AppConfig
-from mult_agents_memory.app.mult_agents.rag.core import RAGConfig
-
-# 将项目根目录添加到 PYTHONPATH，解决模块导入问题
+# 将项目根目录添加到 PYTHONPATH
 project_root = Path(__file__).resolve().parents[3]
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
-# 先加载 .env，再导入其他模块（确保 Milvus 配置正确）
+app_root = Path(__file__).resolve().parents[2]
+if str(app_root) not in sys.path:
+    sys.path.insert(0, str(app_root))
+
+# 先加载 .env
 from dotenv import load_dotenv
 env_path = project_root / ".env"
 if env_path.exists():
     load_dotenv(dotenv_path=env_path)
 
+from mult_agents.rag.core import RAGSystem, RAGConfig
+from mult_agents.config import AppConfig
 
-
-
-
-
-INPUT_PATH = Path("/Users/pengshaoyong/Documents/AI_Project/mult_agent/mult_agents_memory/README.md")
-COLLECTION_NAME = ""
-MILVUS_HOST = ""
-MILVUS_PORT = 0
+INPUT_PATH = Path("C:/Users/Lenovo/Desktop/Building Automation/md_output")
+COLLECTION_NAME = "mult_agent_memory"
+MILVUS_HOST = "127.0.0.1"
+MILVUS_PORT = 19530
 EMBEDDING_MODEL = "text-embedding-v1"
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
@@ -65,10 +62,10 @@ def main() -> None:
 
     paths = _collect_paths(input_path)
     if not paths:
-        raise ValueError(f"未找到可入库文件: {input_path}")
+        raise ValueError(f"no files found: {input_path}")
 
     total_chunks = rag.ingest_paths(paths)
-    print(f"入库完成 | 文件数={len(paths)} | chunk数={total_chunks} | collection={collection_name}")
+    print(f"done | files={len(paths)} | chunks={total_chunks} | collection={collection_name}")
 
 
 if __name__ == "__main__":
