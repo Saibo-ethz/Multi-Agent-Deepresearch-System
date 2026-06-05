@@ -1,11 +1,3 @@
-"""
-Agent 记忆系统模块
-
-提供短期记忆和长期记忆的统一管理，支持：
-- 短期记忆：基于 LangGraph Checkpoint 的线程级记忆
-- 长期记忆：基于 PostgreSQL + 向量的持久化记忆
-- 语义记忆：用户画像、事实知识
-- 情景记忆：历史任务、执行轨迹
 
 Usage:
     from mult_agents.memory import MemoryManager
